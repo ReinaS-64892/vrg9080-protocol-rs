@@ -1,0 +1,27 @@
+[package]
+name = "vrg9080-protocol"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.85"
+description = "Synchronous VRG9080 IMU and proximity reader with an independent report codec"
+readme = "README.md"
+publish = false
+include = ["src/**", "tests/**", "examples/**", "README.md", "Cargo.toml", "Cargo.lock"]
+
+[features]
+default = ["hidraw"]
+hidraw = ["dep:libc"]
+
+[target.'cfg(target_os = "linux")'.dependencies]
+libc = { version = "0.2.186", optional = true }
+
+[[example]]
+name = "read_sensors"
+required-features = ["hidraw"]
+
+[lints.rust]
+unsafe_op_in_unsafe_fn = "deny"
+missing_docs = "warn"
+
+[lints.clippy]
+undocumented_unsafe_blocks = "deny"
