@@ -113,4 +113,4 @@ cargo run --release --example read_sensors -- --startup first-two --seconds 30
 
 冷間起動での比較結果として有効なのは `startup_performed=true` の実行です。近接の現在値も確認したい場合だけ `--query-proximity` を加えます。受信した不正レポートの診断は、エラーとヘッダーのフラグ・種類・長さに限定し、ペイロードは含めません。
 
-ライセンスは未設定、公開配布は無効（`publish = false`）です。
+この crate は GNU General Public License version 3 またはそれ以降のバージョン（GPL-3.0-or-later）の下でライセンスされています。詳細は [LICENSE](LICENSE) を参照してください。

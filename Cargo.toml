@@ -3,6 +3,7 @@ name = "vrg9080-protocol"
 version = "0.1.0"
 edition = "2024"
 rust-version = "1.85"
+license = "GPL-3.0-or-later"
 description = "Synchronous VRG9080 IMU and proximity reader with an independent report codec"
 readme = "README.md"
 publish = false
