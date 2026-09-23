@@ -11,13 +11,19 @@ include = ["src/**", "tests/**", "examples/**", "README.md", "Cargo.toml", "Carg
 [features]
 default = ["hidraw"]
 hidraw = ["dep:libc"]
+gui = ["hidraw", "dep:minifb"]
 
 [target.'cfg(target_os = "linux")'.dependencies]
 libc = { version = "0.2.186", optional = true }
+minifb = { version = "0.27", optional = true }
 
 [[example]]
 name = "read_sensors"
 required-features = ["hidraw"]
+
+[[example]]
+name = "visualize_imu"
+required-features = ["gui"]
 
 [lints.rust]
 unsafe_op_in_unsafe_fn = "deny"

@@ -79,10 +79,13 @@ loop {
 cargo run --example read_sensors -- --list
 cargo run --example read_sensors -- --seconds 30 --query-proximity
 cargo run --example read_sensors -- --device /dev/hidrawN --seconds 300
+cargo run --features gui --example visualize_imu
 cargo test --all-features
 cargo test --no-default-features
 cargo clippy --all-targets --all-features -- -D warnings
 ```
+
+`visualize_imu` は Linux のウィンドウに加速度・角速度・磁気の X/Y/Z をバーで表示し、受信した角速度を積分して回転する軸ラベル付きワイヤーフレーム箱も表示します。非同期ステータスで届いた近接値も表示します。箱は起動時を基準にした簡易表示で、ジャイロのドリフトを補正する姿勢推定ではありません。バーの幅は見やすさのため加速度 ±2 g、角速度 ±500 deg/s、磁気 ±100 raw を目安にクリップします。GUI 依存は `gui` feature を指定したときだけ有効です。ウィンドウを閉じるか Esc キーで終了します。
 
 CLI は IMU を既定で 100 件ごと（最初の 1 件も表示）、近接変化をその都度表示し、終了時に受信数・不正レポート数を表示します。`--imu-every 1` で全 IMU を表示できます。長さ 7 の `4A` 応答は未解釈の 2 バイト値として表示します。受信レポート全体や識別用ペイロードは出力しません。
 
